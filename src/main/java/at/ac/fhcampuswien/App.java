@@ -1,5 +1,6 @@
 package at.ac.fhcampuswien;
 
+import java.text.DecimalFormat;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -101,16 +102,23 @@ public class App {
                 sum = sum - mark;
             }
 
-            if (mark == 0) {
-                count = count - 1;
+            if (mark == 0 && count == 1) {
                 average = (sum / count);
-                System.out.println("Average: " + String.format(Locale.US, "%.2f", average));
+                System.out.println("Average: " + new DecimalFormat("0.00").format(average));
                 System.out.println("Negative marks: " + negativecount);
                 break;
 
+            } else if(mark == 0) {
+                count = count - 1;
+                average = (sum / count);
+                System.out.println("Average: " + new DecimalFormat("0.00").format(average));
+                System.out.println("Negative marks: " + negativecount);
+                break;
             }
+
         }
     }
+
 
     //todo Task 6
     public void happyNumbers(){
